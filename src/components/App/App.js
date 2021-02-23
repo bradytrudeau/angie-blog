@@ -14,9 +14,9 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
+import Admin from '../Admin/Admin';
 import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
+import Home from '../Home/Home';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
@@ -38,10 +38,21 @@ class App extends Component {
 
             {/* Visiting localhost:3000/about will show the about page. */}
             <Route
-              // shows AboutPage at all times (logged in or not)
               exact
               path="/about"
               component={AboutPage}
+            />
+
+            <Route
+              exact
+              path="/info"
+              component={InfoPage}
+            />
+
+            <Route
+              exact
+              path="/home"
+              component={Home}
             />
 
             {/* For protected routes, the view could show one of several things on the same route.
@@ -51,15 +62,8 @@ class App extends Component {
             <ProtectedRoute
               // logged in shows UserPage else shows LoginPage
               exact
-              path="/user"
-              component={UserPage}
-            />
-
-            <ProtectedRoute
-              // logged in shows InfoPage else shows LoginPage
-              exact
-              path="/info"
-              component={InfoPage}
+              path="/admin"
+              component={Admin}
             />
 
             {/* When a value is supplied for the authRedirect prop the user will
@@ -72,7 +76,7 @@ class App extends Component {
               exact
               path="/login"
               component={LoginPage}
-              authRedirect="/user"
+              authRedirect="/admin"
             />
             <ProtectedRoute
               // with authRedirect:
@@ -81,16 +85,7 @@ class App extends Component {
               exact
               path="/registration"
               component={RegisterPage}
-              authRedirect="/user"
-            />
-            <ProtectedRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows LandingPage at "/home"
-              exact
-              path="/home"
-              component={LandingPage}
-              authRedirect="/user"
+              authRedirect="/admin"
             />
 
             {/* If none of the other routes matched, we will show a 404. */}
