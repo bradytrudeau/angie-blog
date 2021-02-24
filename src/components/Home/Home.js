@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-
 import './Home.css';
-
-// CUSTOM COMPONENTS
-import RegisterForm from '../RegisterForm/RegisterForm';
+import Hero from '../../images/Hero-Small.png';
 
 class Home extends Component {
   state = {
     heading: "Angie's B00bz",
   };
+
+  componentDidMount() {
+    this.setFeed();
+  }
+
+  setFeed = () => {
+    this.props.dispatch({
+      type: 'FETCH_FEED',
+      payload: 'angiemtrudeau'
+    });
+  }
 
   onLogin = (event) => {
     this.props.history.push('/login');
@@ -18,8 +26,8 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="container">
-        <h2>{this.state.heading}</h2>
+      <div className="hero">
+        <img src={Hero}></img>
       </div>
     );
   }

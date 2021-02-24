@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import Button from '@material-ui/core/Button';
+import { TextField } from '@material-ui/core';
+import { withRouter } from 'react-router-dom';
+
 
 class LoginForm extends Component {
   state = {
@@ -18,7 +22,7 @@ class LoginForm extends Component {
           username: this.state.username,
           password: this.state.password,
         },
-      });
+      }); this.props.history.push('/admin')
     } else {
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
@@ -40,35 +44,36 @@ class LoginForm extends Component {
           </h3>
         )}
         <div>
-          <label htmlFor="username">
-            Username:
-            <input
-              type="text"
-              name="username"
-              required
-              value={this.state.username}
-              onChange={this.handleInputChangeFor('username')}
+          <TextField 
+            label='Username'
+            type='text'
+            name='username'
+            value={this.state.username}  
+            fullWidth={true}  
+            onChange={this.handleInputChangeFor('username')} 
             />
-          </label>
+          <TextField 
+            label='Password'
+            type='password'
+            name='password'
+            value={this.state.password}
+            fullWidth={true}    
+            onChange={this.handleInputChangeFor('password')} 
+          />
         </div>
         <div>
-          <label htmlFor="password">
-            Password:
-            <input
-              type="password"
-              name="password"
-              required
-              value={this.state.password}
-              onChange={this.handleInputChangeFor('password')}
-            />
-          </label>
-        </div>
-        <div>
-          <input className="btn" type="submit" name="submit" value="Log In" />
+          <div className="addTrackBtn">
+            <Button 
+              type="submit"
+              variant="contained" 
+              color="primary">
+                  Log In
+            </Button>
+          </div>
         </div>
       </form>
     );
   }
 }
 
-export default connect(mapStoreToProps)(LoginForm);
+export default connect(mapStoreToProps)(withRouter(LoginForm));
