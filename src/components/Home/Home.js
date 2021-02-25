@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import './Home.css';
 import Hero from '../../images/Hero-Small.png';
+import Feed from '../Feed/Feed';
 
 class Home extends Component {
   state = {
@@ -16,7 +17,6 @@ class Home extends Component {
   setFeed = () => {
     this.props.dispatch({
       type: 'FETCH_FEED',
-      payload: 'angiemtrudeau'
     });
   }
 
@@ -28,6 +28,7 @@ class Home extends Component {
     return (
       <div className="hero">
         <img src={Hero}></img>
+        <Feed/>
       </div>
     );
   }

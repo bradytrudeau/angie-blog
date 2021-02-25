@@ -22,6 +22,16 @@ const Header = (props) => {
       <h4 className="nav-subtitle">Food Blogger + Recipes</h4>
       <div className="nav">
         <Link 
+            to='/home'
+            className="nav-link">
+                HOME
+        </Link>
+        <Link 
+            to='/feed'
+            className="nav-link">
+                RECENT POSTS
+        </Link>
+        <Link 
             to='/about'
             className="nav-link">
                 ABOUT
@@ -30,6 +40,11 @@ const Header = (props) => {
             to='/recipes'
             className="nav-link">
                 RECIPES
+        </Link>
+        <Link 
+            to='/restaurants'
+            className="nav-link">
+                RESTAURANTS
         </Link>
         <Link 
             to='/contact'
