@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from '../Header/Header';
 
-const AboutPage = () => (
+const Recipes = () => (
   <div className="container">
     <div>
       <Header/>
-      <p>This about page is for anyone to read!</p>
+      <p>Recipes!</p>
     </div>
   </div>
 );
 
-export default AboutPage;
+export default Recipes;

@@ -1,20 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 import './Header.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 const Header = (props) => {
-  let loginLinkData = {
-    path: '/login',
-    text: 'Login / Register',
-  };
-
-  if (props.store.user.id != null) {
-    loginLinkData.path = '/user';
-    loginLinkData.text = 'Home';
-  }
 
   return (
     <div className="header">
@@ -26,30 +17,30 @@ const Header = (props) => {
             className="nav-link">
                 HOME
         </Link>
+        <AnchorLink 
+          href='#feed'
+          className="nav-link">
+            RECENT POSTS
+        </AnchorLink>
         <Link 
-            to='/feed'
-            className="nav-link">
-                RECENT POSTS
+          to='/about'
+          className="nav-link">
+            ABOUT
         </Link>
         <Link 
-            to='/about'
-            className="nav-link">
-                ABOUT
+          to='/recipes'
+          className="nav-link">
+            RECIPES
         </Link>
         <Link 
-            to='/recipes'
-            className="nav-link">
-                RECIPES
+          to='/restaurants'
+          className="nav-link">
+            RESTAURANTS
         </Link>
         <Link 
-            to='/restaurants'
-            className="nav-link">
-                RESTAURANTS
-        </Link>
-        <Link 
-            to='/contact'
-            className="nav-link">
-                CONTACT
+          to='/contact'
+          className="nav-link">
+            CONTACT
         </Link>
       </div>
     </div>

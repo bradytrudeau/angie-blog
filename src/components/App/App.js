@@ -16,6 +16,9 @@ import Home from '../Home/Home';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import './App.css';
+import Recipes from '../Recipes/Recipes';
+import Restaurants from '../Restaurants/Restaurants';
+import Contact from '../Contact/Contact';
 
 class App extends Component {
   componentDidMount() {
@@ -26,7 +29,6 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Header />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
@@ -37,13 +39,26 @@ class App extends Component {
               path="/about"
               component={AboutPage}
             />
-
+            <Route
+              exact
+              path="/recipes"
+              component={Recipes}
+            />
+            <Route
+              exact
+              path="/restaurants"
+              component={Restaurants}
+            />
+            <Route
+              exact
+              path="/contact"
+              component={Contact}
+            />
             <Route
               exact
               path="/info"
               component={InfoPage}
             />
-
             <Route
               exact
               path="/home"
@@ -64,7 +79,7 @@ class App extends Component {
             {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
             be taken to the component and path supplied. */}
-            <ProtectedRoute
+            <Route
               // with authRedirect:
               // - if logged in, redirects to "/user"
               // - else shows LoginPage at /login
@@ -73,7 +88,7 @@ class App extends Component {
               component={LoginPage}
               authRedirect="/admin"
             />
-            <ProtectedRoute
+            <Route
               // with authRedirect:
               // - if logged in, redirects to "/user"
               // - else shows RegisterPage at "/registration"

@@ -3,7 +3,6 @@ import './Feed.css';
 import FeedItem from '../FeedItem/FeedItem';
 import { useSelector, useDispatch } from 'react-redux';
 import {Grid} from '@material-ui/core';
-import mapStoreToProps from '../../redux/mapStoreToProps';
 
 function Feed() {
   const igFeedData = useSelector( (state) => state.igReducer);
@@ -12,15 +11,16 @@ function Feed() {
   
   
   return (
-    <div className='new-posts'>
-      <Grid container spacing={1}>
-        {/* {igFeedData.map((igPost, i) => (
+    <div id='feed' className='new-posts'>
+      <h1>HERE IS A GRID</h1>
+      {/* <Grid container spacing={1}>
+        {igFeedData.map((igPost, i) => (
           <FeedItem 
             key={i}
             igPost={igPost}
           />
-        ))} */}
-      </Grid>
+        ))}
+      </Grid> */}
     </div>
   );
 } 

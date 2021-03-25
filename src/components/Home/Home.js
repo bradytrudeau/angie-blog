@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import './Home.css';
-import Hero from '../../images/Hero-Small.png';
 import Feed from '../Feed/Feed';
+import Header from '../Header/Header';
+import Hero from '../Hero/Hero';
 
 class Home extends Component {
   state = {
@@ -26,8 +27,9 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="hero">
-        <img src={Hero}></img>
+      <div className="home">
+        <Header/>
+        <Hero/>
         <Feed/>
       </div>
     );

@@ -4,6 +4,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import Button from '@material-ui/core/Button';
 import { TextField } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
+import './LoginForm.css';
 
 
 class LoginForm extends Component {
@@ -37,7 +38,7 @@ class LoginForm extends Component {
   render() {
     return (
       <form className="formPanel" onSubmit={this.login}>
-        <h2>Login</h2>
+        <h2 className="login-text">Login</h2>
         {this.props.store.errors.loginMessage && (
           <h3 className="alert" role="alert">
             {this.props.store.errors.loginMessage}
@@ -62,12 +63,12 @@ class LoginForm extends Component {
           />
         </div>
         <div>
-          <div className="addTrackBtn">
+          <div className="login-btn">
             <Button 
               type="submit"
               variant="contained" 
               color="primary">
-                  Log In
+                Log In
             </Button>
           </div>
         </div>
