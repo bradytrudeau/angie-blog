@@ -5,22 +5,21 @@ import { useSelector, useDispatch } from 'react-redux';
 import {Grid} from '@material-ui/core';
 
 function Feed() {
-  const igFeedData = useSelector( (state) => state.igReducer);
+  const feedData = useSelector( (state) => state.postReducer);
   const dispatch = useDispatch();
-  console.log('State:', igFeedData);
+  console.log('State:', feedData);
   
   
   return (
     <div id='feed' className='new-posts'>
-      <h1>HERE IS A GRID</h1>
-      {/* <Grid container spacing={1}>
-        {igFeedData.map((igPost, i) => (
+      <Grid container spacing={1}>
+        {feedData.map((post, i) => (
           <FeedItem 
             key={i}
-            igPost={igPost}
+            post={post}
           />
         ))}
-      </Grid> */}
+      </Grid>
     </div>
   );
 } 

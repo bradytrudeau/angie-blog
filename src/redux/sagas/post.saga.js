@@ -2,6 +2,19 @@ import { put, takeLatest, all } from 'redux-saga/effects';
 import axios from 'axios';
 import swal from 'sweetalert';
 
+
+function* fetchPost(action) {
+    let response = yield axios({
+      method: 'GET',
+      url: `/api/post/`
+    });  
+    console.log('Post Feed:', response.data);
+    yield put({
+      type: 'SET_POST',
+      payload: response.data
+    });
+  }
+
   // Function sends post creation data
 function* createPostSaga(action) {
     try{
@@ -29,6 +42,7 @@ function* createPostSaga(action) {
 
 function* postSaga() {
     yield takeLatest('CREATE_POST', createPostSaga);
+    yield takeLatest('FETCH_POST', fetchPost);
 };
 
 export default postSaga;

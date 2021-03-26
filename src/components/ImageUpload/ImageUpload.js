@@ -11,16 +11,16 @@ import Container from '@material-ui/core/Container';
 import swal from 'sweetalert';
 import moment from 'moment';
 import './ImageUpload.css';
+import AdminHeader from '../AdminHeader/AdminHeader';
 
 class ImageUpload extends Component {
-
   state = {
     newPost: {
       fileUrl: '',
       title: '',
       description: '',
       date: '',
-      tag: 'recipe',
+      tag: '',
     }
   };
 
@@ -82,6 +82,7 @@ class ImageUpload extends Component {
     const s3Url = `http://${process.env.REACT_APP_S3_BUCKET}.s3.amazonaws.com`;
       return (
         <div>
+          <AdminHeader/>
           <Container>
             <Card className="post-form">
               <Typography 

@@ -3,6 +3,21 @@ const pool = require('../modules/pool');
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 const router = express.Router();
 
+// GET route to return the users posts
+router.get('/', (req, res) => {
+  console.log('/post GET route');
+  const queryText = `SELECT * FROM "post" WHERE "user_id" = $1 ORDER BY "id" ASC;`; 
+  const queryParams = [1];
+  pool.query(queryText, queryParams)
+    .then((result) => {
+    res.send(result.rows);
+    })
+    .catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+    });
+});
+
 // post route communicates with createpostSaga
 router.post('/', rejectUnauthenticated, (req, res) => {
   console.log('/post POST route');

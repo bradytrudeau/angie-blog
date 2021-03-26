@@ -1,0 +1,63 @@
+.header {
+  background-color: #ffffff;
+  padding-top: 1%;
+}
+
+.nav {
+text-align: center;
+border-top: #000000;
+border-bottom: #000000;
+border-right: #ffffff;
+border-left: #ffffff;
+border-style: double;
+border-width: 4px;
+padding-bottom: 20px;
+padding-top: 20px;
+background-color: #ffffff;
+}
+
+.nav-title {
+  text-align: center;
+  font-size: 24px;
+  color: #000000;
+  font-family: 'ScriptFont';
+  text-decoration: none;
+  margin: 0;
+}
+
+.nav-subtitle {
+  text-align: center;
+  color: #000000;
+  font-family: 'TextFont';
+  margin-top: 0;
+}
+
+.nav-link {
+color: #000000;
+text-align: center;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 20px;
+padding-bottom: 20px;
+text-decoration: none;
+font-size: 12px;
+border:none;
+cursor: pointer;
+font-family: 'TextFont';
+
+}
+
+.nav-link:hover {
+background-color: #000000;
+color: #ffffff;
+}
+
+@font-face {
+  font-family: 'ScriptFont';
+  src: url('../../fonts/Tomatoes-O8L8.ttf');
+}
+
+@font-face {
+  font-family: 'TextFont';
+  src: url('../../fonts/MoongladeDemoBold-jOzM.ttf');
+}

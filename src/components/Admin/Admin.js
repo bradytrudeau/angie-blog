@@ -4,13 +4,13 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import ImageUpload from '../ImageUpload/ImageUpload';
 import './Admin.css';
+import AdminHeader from '../AdminHeader/AdminHeader';
 
 class Admin extends Component {
   render() {
     return (
       <div>
-        <h1 className="welcome">Welcome, Stinky Wizard!</h1>
-        <ImageUpload/>
+        <AdminHeader/>
         <LogOutButton className="log-in" />
       </div>
     );

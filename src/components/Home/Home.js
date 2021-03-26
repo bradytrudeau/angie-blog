@@ -7,9 +7,6 @@ import Header from '../Header/Header';
 import Hero from '../Hero/Hero';
 
 class Home extends Component {
-  state = {
-    heading: "Angie's B00bz",
-  };
 
   componentDidMount() {
     this.setFeed();
@@ -17,7 +14,7 @@ class Home extends Component {
 
   setFeed = () => {
     this.props.dispatch({
-      type: 'FETCH_FEED',
+      type: 'FETCH_POST',
     });
   }
 
@@ -30,6 +27,7 @@ class Home extends Component {
       <div className="home">
         <Header/>
         <Hero/>
+        <h2 className="nav-subtitle">Recent Posts</h2>
         <Feed/>
       </div>
     );

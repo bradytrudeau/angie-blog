@@ -13,12 +13,12 @@ import Admin from '../Admin/Admin';
 import InfoPage from '../InfoPage/InfoPage';
 import Home from '../Home/Home';
 import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
 import './App.css';
 import Recipes from '../Recipes/Recipes';
 import Restaurants from '../Restaurants/Restaurants';
 import Contact from '../Contact/Contact';
 import ImageUpload from '../ImageUpload/ImageUpload';
+import EditPost from '../EditPost/EditPost';
 
 class App extends Component {
   componentDidMount() {
@@ -78,8 +78,14 @@ class App extends Component {
             <ProtectedRoute
               // logged in shows UserPage else shows LoginPage
               exact
-              path="/imageupload"
+              path="/add"
               component={ImageUpload}
+            />
+            <ProtectedRoute
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/edit"
+              component={EditPost}
             />
 
             {/* When a value is supplied for the authRedirect prop the user will

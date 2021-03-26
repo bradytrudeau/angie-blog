@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
-import './Header.css';
+import './AdminHeader.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-const Header = (props) => {
+const AdminHeader = (props) => {
 
   return (
     <div className="header">
-      <h1 className="nav-title">Angie Trudeau</h1>
+      <h2 className="nav-title">Angie Trudeau</h2>
       <h4 className="nav-subtitle">Food Blogger + Recipes</h4>
       <div className="nav">
         <Link 
@@ -43,8 +43,25 @@ const Header = (props) => {
             CONTACT
         </Link>
       </div>
+      <div className="nav">
+        <Link 
+          to='/admin'
+          className="nav-link">
+            ADMIN HOME
+        </Link>
+        <Link 
+          to='/add'
+          className="nav-link">
+            ADD POST
+        </Link>
+        <Link 
+          to='/edit'
+          className="nav-link">
+            EDIT POST
+        </Link>
+      </div>
     </div>
   );
 };
 
-export default connect(mapStoreToProps)(Header);
+export default connect(mapStoreToProps)(AdminHeader);
