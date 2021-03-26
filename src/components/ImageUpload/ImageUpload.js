@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
+import {connect} from 'react-redux';
+import mapStoreToProps from '../../redux/mapStoreToProps';
 import Button from '@material-ui/core/Button';
 import { TextField, Select, FormControl, InputLabel, MenuItem } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
@@ -15,11 +17,10 @@ class ImageUpload extends Component {
   state = {
     newPost: {
       fileUrl: '',
-      postId: null,
       title: '',
       description: '',
       date: '',
-      tag: '',
+      tag: 'recipe',
     }
   };
 
@@ -27,8 +28,10 @@ class ImageUpload extends Component {
     console.log('File uploaded with filename', info.filename)
     console.log('Access it on s3 at', info.fileUrl)
     this.setState({
-      fileUrl: info.fileUrl,
-      date: moment(Date()).format(),
+      newPost: {
+        fileUrl: info.fileUrl,
+        date: moment(Date()).format(),
+      }
     });
   }
 
@@ -41,16 +44,18 @@ class ImageUpload extends Component {
   }
 
   submitPhoto = (event) => {
+    console.log('NEW POST', this.state.newPost);
+    
     event.preventDefault();
     this.props.dispatch({
-      type: 'CREATE_PHOTOS',
+      type: 'CREATE_POST',
       payload: this.state.newPost
     });
+    this.handleCancel();
   };
 
   // captures the input values in the state
   handleChangeFor = (property, event) => {
-    console.log('event happened')
     this.setState({
       newPost: {
         ...this.state.newPost,
@@ -63,11 +68,10 @@ class ImageUpload extends Component {
   this.setState({
     newPost: {
       fileUrl: '',
-      postId: null,
       title: '',
       description: '',
       date: '',
-      tag: '',
+      tag: 'recipe',
     }
     });
   }
@@ -105,7 +109,7 @@ class ImageUpload extends Component {
                   />
                   <TextField 
                     label='Description'
-                    type='number'
+                    type='text'
                     value={this.state.newPost.description}
                     fullWidth={true}    
                     onChange={(event) => this.handleChangeFor('description', event)} 
@@ -116,11 +120,11 @@ class ImageUpload extends Component {
                       labelId="tagLabel"
                       id="demo-simple-select"
                       onChange={(event) => this.handleChangeFor('tag', event)}
-                      defaultValue={1}
+                      value={this.state.newPost.tag}
                       displayEmpty={true}
                     >
-                      <MenuItem value={1}>Recipe</MenuItem>
-                      <MenuItem value={2}>Restaurant Review</MenuItem>
+                      <MenuItem value='recipe'>Recipe</MenuItem>
+                      <MenuItem value='restaurant'>Restaurant Review</MenuItem>
                     </Select>
                   </FormControl>
                   <div className="add-btn">
@@ -138,4 +142,4 @@ class ImageUpload extends Component {
   }
 }
 
-export default ImageUpload;
+export default connect(mapStoreToProps)(ImageUpload);
