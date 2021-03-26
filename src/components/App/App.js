@@ -6,7 +6,6 @@ import {
   Switch,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AboutPage from '../AboutPage/AboutPage';
@@ -19,6 +18,7 @@ import './App.css';
 import Recipes from '../Recipes/Recipes';
 import Restaurants from '../Restaurants/Restaurants';
 import Contact from '../Contact/Contact';
+import ImageUpload from '../ImageUpload/ImageUpload';
 
 class App extends Component {
   componentDidMount() {
@@ -75,6 +75,12 @@ class App extends Component {
               path="/admin"
               component={Admin}
             />
+            <ProtectedRoute
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/imageupload"
+              component={ImageUpload}
+            />
 
             {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
@@ -86,15 +92,6 @@ class App extends Component {
               exact
               path="/login"
               component={LoginPage}
-              authRedirect="/admin"
-            />
-            <Route
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows RegisterPage at "/registration"
-              exact
-              path="/registration"
-              component={RegisterPage}
               authRedirect="/admin"
             />
 
