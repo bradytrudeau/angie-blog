@@ -19,6 +19,7 @@ import Restaurants from '../Restaurants/Restaurants';
 import Contact from '../Contact/Contact';
 import ImageUpload from '../ImageUpload/ImageUpload';
 import EditPost from '../EditPost/EditPost';
+import ViewPost from '../ViewPost/ViewPost';
 
 class App extends Component {
   componentDidMount() {
@@ -64,6 +65,15 @@ class App extends Component {
               path="/home"
               component={Home}
             />
+            <Route
+              // with authRedirect:
+              // - if logged in, redirects to "/user"
+              // - else shows LoginPage at /login
+              exact
+              path="/login"
+              component={LoginPage}
+              authRedirect="/admin"
+            />
 
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
@@ -87,20 +97,10 @@ class App extends Component {
               path="/edit"
               component={EditPost}
             />
-
-            {/* When a value is supplied for the authRedirect prop the user will
-            be redirected to the path supplied when logged in, otherwise they will
-            be taken to the component and path supplied. */}
             <Route
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows LoginPage at /login
-              exact
-              path="/login"
-              component={LoginPage}
-              authRedirect="/admin"
+              path="/:slug"
+              component={ViewPost}
             />
-
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>

@@ -18,6 +18,23 @@ router.get('/', (req, res) => {
     });
 });
 
+// GET route to return the users posts
+router.get('/:slug', (req, res) => {
+  console.log('/post GET route');
+  const queryText = `SELECT * FROM "post" WHERE "slug" = $1;`; 
+  const queryParams = [req.params.slug];
+  console.log('REQ', req.params);
+  
+  pool.query(queryText, queryParams)
+    .then((result) => {
+    res.send(result.rows);
+    })
+    .catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+    });
+});
+
 // post route communicates with createpostSaga
 router.post('/', rejectUnauthenticated, (req, res) => {
   console.log('/post POST route');
@@ -26,10 +43,10 @@ router.post('/', rejectUnauthenticated, (req, res) => {
   console.log('user', req.user);
 
   const queryString = `
-    INSERT INTO "post" ("title", "description", "date", "file_url", "tag", "user_id")
-    VALUES ($1, $2, $3, $4, $5, $6);
+    INSERT INTO "post" ("title", "description", "date", "file_url", "tag", "slug", "user_id")
+    VALUES ($1, $2, $3, $4, $5, $6, $7);
   `;
-  pool.query(queryString, [req.body.title, req.body.description, req.body.date, req.body.fileUrl, req.body.tag, req.user.id])
+  pool.query(queryString, [req.body.title, req.body.description, req.body.date, req.body.fileUrl, req.body.tag, req.body.slug, req.user.id])
     .then((results) => {
       res.sendStatus(201);
     })

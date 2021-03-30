@@ -21,6 +21,7 @@ class ImageUpload extends Component {
       description: '',
       date: '',
       tag: '',
+      slug: ''
     }
   };
 
@@ -72,6 +73,7 @@ class ImageUpload extends Component {
       description: '',
       date: '',
       tag: '',
+      slug: ''
     }
     });
   }
@@ -126,6 +128,14 @@ class ImageUpload extends Component {
                       <MenuItem value='restaurant'>Restaurant Review</MenuItem>
                     </Select>
                   </FormControl>
+                  <TextField 
+                    label='Slug'
+                    type='text'
+                    value={this.state.newPost.slug}
+                    fullWidth={true}    
+                    onChange={(event) => this.handleChangeFor('slug', event)} 
+                  />
+                  <h4>Ex: www.example.com/slug</h4>
                   <div className="add-btn">
                     <Button variant='contained' type="submit" color='primary'>Add a New Post</Button>
                   </div>

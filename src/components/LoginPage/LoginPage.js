@@ -17,4 +17,4 @@ class LoginPage extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(LoginPage);
+export default LoginPage;

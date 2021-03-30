@@ -18,6 +18,10 @@ class Home extends Component {
     });
   }
 
+  onLogin = (event) => {
+    this.props.history.push('/login');
+  };
+
   render() {
     return (
       <div className="home">

@@ -14,9 +14,9 @@ const Header = (props) => {
       <h4 className="nav-subtitle">Food Blogger + Recipes</h4>
       <div className="nav">
         <Link 
-            to='/home'
-            className="nav-link">
-                HOME
+          to='/home'
+          className="nav-link">
+            HOME
         </Link>
         <Link
           smooth 
