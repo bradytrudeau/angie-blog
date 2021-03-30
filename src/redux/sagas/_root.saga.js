@@ -4,6 +4,9 @@ import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import igSaga from './ig.saga';
 import postSaga from './post.saga';
+import recipeSaga from './recipe.saga';
+import restaurantSaga from './restaurant.saga';
+
 
 
 // rootSaga is the primary saga.
@@ -19,6 +22,8 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     igSaga(),
-    postSaga()
+    postSaga(),
+    recipeSaga(),
+    restaurantSaga()
   ]);
 }

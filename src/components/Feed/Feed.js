@@ -6,13 +6,13 @@ import {Grid} from '@material-ui/core';
 
 function Feed() {
   const feedData = useSelector( (state) => state.postReducer);
-  const dispatch = useDispatch();
   console.log('State:', feedData);
   
   
   return (
     <div id='feed' className='new-posts'>
-      <Grid container spacing={1}>
+      <h2 className="nav-subtitle">Recent Posts</h2>
+      <Grid container justify='space-around'>
         {feedData.map((post, i) => (
           <FeedItem 
             key={i}

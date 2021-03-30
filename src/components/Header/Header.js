@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 import { connect } from 'react-redux';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import './Header.css';
@@ -17,11 +18,12 @@ const Header = (props) => {
             className="nav-link">
                 HOME
         </Link>
-        <AnchorLink 
-          href='#feed'
+        <Link
+          smooth 
+          to='/home#feed'
           className="nav-link">
             RECENT POSTS
-        </AnchorLink>
+        </Link>
         <Link 
           to='/about'
           className="nav-link">

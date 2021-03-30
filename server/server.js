@@ -12,6 +12,8 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const igRouter = require('./routes/ig.router');
 const postRouter = require('./routes/post.router');
+const recipeRouter = require('./routes/recipe.router');
+const restaurantRouter = require('./routes/restaurant.router');
 const UploaderS3Router = require('react-dropzone-s3-uploader/s3router');
 
 // Body parser middleware
@@ -29,6 +31,9 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/ig', igRouter);
 app.use('/api/post', postRouter);
+app.use('/api/recipe', recipeRouter);
+app.use('/api/restaurant', restaurantRouter);
+
 
 // S3 Bucket
 app.use('/s3', UploaderS3Router({

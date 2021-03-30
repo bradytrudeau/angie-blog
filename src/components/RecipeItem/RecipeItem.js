@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
 import {Grid} from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -9,30 +8,30 @@ import ShareIcon from '@material-ui/icons/Share';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
-import './FeedItem.css';
+import './RecipeItem.css';
 
-function FeedItem(props) {
+function RecipeItem(props) {
   
   return (
-    <div className='new-posts'>
-      <Grid item justify="center">
+    <div className='new-recipes'>
+      <Grid item>
         <Card
           style={{width: "300px"}}
         >
-          <h3 className="feed-item-title">
-              {props.post.title}
+          <h3 className="recipe-item-title">
+              {props.recipe.title}
           </h3>
-          <p className="feed-item-tag">
-            {"Post Type: " + props.post.tag}
+          <p className="recipe-item-tag">
+            {"recipe Type: " + props.recipe.tag}
           </p>
           <CardMedia
-            image={props.post.file_url}
-            title="Post"
+            image={props.recipe.file_url}
+            title="recipe"
             style={{ height: "200px" }}
           />
           <CardContent className="cards">
-              <p className="feed-description">
-                {props.post.description.slice(0, 100) + '...'}
+              <p className="recipe-description">
+                {props.recipe.description.slice(0, 100) + '...'}
               </p>
               <div>
                 <Button 
@@ -57,4 +56,4 @@ function FeedItem(props) {
 
 
 
-export default FeedItem;
+export default RecipeItem;

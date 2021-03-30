@@ -3,6 +3,9 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import igReducer from './ig.reducer';
 import postReducer from './post.reducer';
+import recipeReducer from './recipe.reducer';
+import restaurantReducer from './restaurant.reducer';
+
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -14,7 +17,9 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
   igReducer,
-  postReducer
+  postReducer,
+  recipeReducer,
+  restaurantReducer
 });
 
 export default rootReducer;

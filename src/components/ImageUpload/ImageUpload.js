@@ -71,7 +71,7 @@ class ImageUpload extends Component {
       title: '',
       description: '',
       date: '',
-      tag: 'recipe',
+      tag: '',
     }
     });
   }
@@ -85,12 +85,9 @@ class ImageUpload extends Component {
           <AdminHeader/>
           <Container>
             <Card className="post-form">
-              <Typography 
-                variant="h4" 
-                component="h2"
-                className="post-title">
-                  Add a Post
-              </Typography>
+              <h2>
+                Add a Post
+              </h2>
               <DropzoneS3Uploader
                 onFinish={this.handleFinishedUpload}
                 s3Url={s3Url}
@@ -114,6 +111,7 @@ class ImageUpload extends Component {
                     value={this.state.newPost.description}
                     fullWidth={true}    
                     onChange={(event) => this.handleChangeFor('description', event)} 
+                    multiline
                   />
                   <FormControl id="dropdown" fullWidth>
                     <InputLabel>Tag</InputLabel>

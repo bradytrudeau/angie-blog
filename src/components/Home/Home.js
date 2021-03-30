@@ -18,16 +18,11 @@ class Home extends Component {
     });
   }
 
-  onLogin = (event) => {
-    this.props.history.push('/login');
-  };
-
   render() {
     return (
       <div className="home">
         <Header/>
         <Hero/>
-        <h2 className="nav-subtitle">Recent Posts</h2>
         <Feed/>
       </div>
     );

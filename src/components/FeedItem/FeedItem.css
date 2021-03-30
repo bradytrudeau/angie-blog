@@ -1,0 +1,17 @@
+.feed-item-title {
+  margin-left: 1rem;
+}
+
+.feed-item-tag {
+  margin-left: 1rem;
+  font-size: .75rem;
+}
+
+.feed-description {
+  word-wrap: break-word;
+  font-size: .75rem;
+}
+
+.icon {
+  float: right;
+}
