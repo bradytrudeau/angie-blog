@@ -20,6 +20,7 @@
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-dom": "^16.8.6",
     "react-dropzone-s3-uploader": "^1.1.0",
+    "react-image-gallery": "^1.0.9",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.0",
     "react-router-hash-link": "^2.4.0",

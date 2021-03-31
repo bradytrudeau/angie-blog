@@ -2,3 +2,5 @@
   text-align: center;
   margin: 2rem;
 }
+
+@import "~react-image-gallery/styles/css/image-gallery.css";

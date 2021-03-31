@@ -13,10 +13,26 @@ import Button from '@material-ui/core/Button';
 import { useSelector } from 'react-redux';
 import './ViewPost.css';
 import Header from '../Header/Header';
+import ImageGallery from 'react-image-gallery';
 
 export default function ViewPost() {
   const [postData, setPostData] = useState(null);
   const { slug } = useParams();
+
+  const images = [
+    {
+      original: 'https://picsum.photos/id/1018/1000/600/',
+      thumbnail: 'https://picsum.photos/id/1018/250/150/',
+    },
+    {
+      original: 'https://picsum.photos/id/1015/1000/600/',
+      thumbnail: 'https://picsum.photos/id/1015/250/150/',
+    },
+    {
+      original: 'https://picsum.photos/id/1019/1000/600/',
+      thumbnail: 'https://picsum.photos/id/1019/250/150/',
+    },
+  ];
 
   useEffect(() => {
     axios({
@@ -37,6 +53,9 @@ export default function ViewPost() {
   return (
     <div className='single-post'>
       <Header/>
+      <ImageGallery
+        items={images}
+      />
       <h2 className="loading">{postData.title}</h2>
     </div>
   );
