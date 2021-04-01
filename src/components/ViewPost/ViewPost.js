@@ -17,22 +17,8 @@ import ImageGallery from 'react-image-gallery';
 
 export default function ViewPost() {
   const [postData, setPostData] = useState(null);
+  const [images, setImages] = useState([]);
   const { slug } = useParams();
-
-  const images = [
-    {
-      original: 'https://picsum.photos/id/1018/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1018/250/150/',
-    },
-    {
-      original: 'https://picsum.photos/id/1015/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1015/250/150/',
-    },
-    {
-      original: 'https://picsum.photos/id/1019/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1019/250/150/',
-    },
-  ];
 
   useEffect(() => {
     axios({
@@ -40,8 +26,115 @@ export default function ViewPost() {
       url: `/api/post/${slug}`
     }).then(response =>{
       setPostData(response.data[0]);
+      if (response.data.length === 1) {
+        setImages([
+          {
+            original: response.data[0].photo,
+            thumbnail: response.data[0].photo,
+          },
+        ])
+      }
+      else if(response.data.length === 2) {
+        setImages([
+          {
+            original: response.data[0].photo,
+            thumbnail: response.data[0].photo,
+          },
+          {
+            original: response.data[1].photo,
+            thumbnail: response.data[1].photo,
+          },        
+        ])
+      }
+      else if(response.data.length === 3) {
+        setImages([
+          {
+            original: response.data[0].photo,
+            thumbnail: response.data[0].photo,
+          },
+          {
+            original: response.data[1].photo,
+            thumbnail: response.data[1].photo,
+          },        
+          {
+            original: response.data[2].photo,
+            thumbnail: response.data[2].photo,
+          },
+        ])
+      }
+      else if(response.data.length === 4) {
+        setImages([
+          {
+            original: response.data[0].photo,
+            thumbnail: response.data[0].photo,
+          },
+          {
+            original: response.data[1].photo,
+            thumbnail: response.data[1].photo,
+          },        
+          {
+            original: response.data[2].photo,
+            thumbnail: response.data[2].photo,
+          },
+          {
+            original: response.data[3].photo,
+            thumbnail: response.data[3].photo,
+          },
+        ])
+      }
+      else if(response.data.length === 5) {
+        setImages([
+          {
+            original: response.data[0].photo,
+            thumbnail: response.data[0].photo,
+          },
+          {
+            original: response.data[1].photo,
+            thumbnail: response.data[1].photo,
+          },        
+          {
+            original: response.data[2].photo,
+            thumbnail: response.data[2].photo,
+          },
+          {
+            original: response.data[3].photo,
+            thumbnail: response.data[3].photo,
+          },
+          {
+            original: response.data[4].photo,
+            thumbnail: response.data[4].photo,
+          },
+        ])
+      }
+      else if(response.data.length === 6) {
+        setImages([
+          {
+            original: response.data[0].photo,
+            thumbnail: response.data[0].photo,
+          },
+          {
+            original: response.data[1].photo,
+            thumbnail: response.data[1].photo,
+          },        
+          {
+            original: response.data[2].photo,
+            thumbnail: response.data[2].photo,
+          },
+          {
+            original: response.data[3].photo,
+            thumbnail: response.data[3].photo,
+          },
+          {
+            original: response.data[4].photo,
+            thumbnail: response.data[4].photo,
+          },
+          {
+            original: response.data[5].photo,
+            thumbnail: response.data[5].photo,
+          },
+        ])
+      }
       console.log('Response:', response.data);
-      
     }).catch(err =>{
       console.log('Error in GET', err);
     });
@@ -57,6 +150,7 @@ export default function ViewPost() {
         items={images}
       />
       <h2 className="loading">{postData.title}</h2>
+      <p className="single-post-body">{postData.description}</p>
     </div>
   );
 } 

@@ -3,4 +3,11 @@
   margin: 2rem;
 }
 
+.single-post-body {
+  padding-left: 10rem;
+  padding-right: 10rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
 @import "~react-image-gallery/styles/css/image-gallery.css";

@@ -20,10 +20,14 @@ router.get('/', (req, res) => {
 
 // GET route to return the users posts
 router.get('/:slug', (req, res) => {
-  console.log('/post GET route');
-  const queryText = `SELECT * FROM "post" WHERE "slug" = $1;`; 
+  // const queryText = `SELECT * FROM "post" WHERE "slug" = $1;`; 
+  const queryText = `
+    SELECT "photo"."file_url" AS "photo", "post"."title", "post"."description", "post"."slug", "post"."tag", "post"."date" FROM "photo"
+    JOIN "post"
+    ON "photo"."post_id" = "post"."id"
+    WHERE "post"."slug" = $1;
+  `;
   const queryParams = [req.params.slug];
-  console.log('REQ', req.params);
   
   pool.query(queryText, queryParams)
     .then((result) => {
@@ -47,7 +51,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
   pool.query(firstQuery, [req.body.title, req.body.description, req.body.date, req.body.tag, req.body.slug, req.user.id])
     .then((result) => {
       let newId = result.rows[0].id;
-      // Add photo to photo table and tie it to a post
+      // Add photo to photo table and associate it with a post
       pool.query(secondQuery, [req.body.fileUrl, newId])
       .then((result) => {
         res.sendStatus(201);
